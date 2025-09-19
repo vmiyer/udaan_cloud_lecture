@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Date & Time Display</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff6a00, #ee0979);
+      color: white;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3em;
+      margin: 0.2em;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    }
+    .datetime {
+      font-size: 2em;
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+  <h1>🌟 Welcome to My Static Website 🌟</h1>
+  <div class="datetime" id="datetime">Loading...</div>
+
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const date = now.toLocaleDateString(undefined, options);
+      const time = now.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+      document.getElementById("datetime").innerHTML = `
+        📅 ${date}<br>⏰ ${time}
+      `;
+    }
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+  </script>
+</body>
+</html>
